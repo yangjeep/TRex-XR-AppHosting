@@ -1,3 +1,6 @@
+> :warning: **This README.md file is out-dated and being worked on**: The instruction below is not valid, to get the exact match for what's described below please visit https://github.com/CiscoIOx/TRexAppHosting 
+
+
 # TRexAppHosting
 This repository contains Cisco TRex application related details on how to run it as a docker app on Cisco Catalyst 9000 series switches. We will cover a usecase where TRex docker app running on Cat9k will generate multistream traffic on each container network interafaces eth0 (vlan 700) and eth1 (vlan 500) to determine the maximum throughput that can be achieved via AppGigabitEthernet (KR port) interface of Cat9k. 
 
