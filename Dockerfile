@@ -10,12 +10,13 @@ RUN apt-get -y install python \
              iputils-ping \
              pciutils \
              vim
-RUN wget http://trex-tgn.cisco.com/trex/release/v2.85.tar.gz && \
-    tar -zxvf v2.85.tar.gz -C / && \
-    chown root:root /v2.85  && \
-    rm v2.85.tar.gz
+RUN wget http://trex-tgn.cisco.com/trex/release/latest.tar.gz && \
+    tar -zxvf latest.tar.gz -C / && \
+    mv latest/ trex-latest/
+    chown root:root /trex-latest  && \
+    rm latest.tar.gz
 #COPY trex_cfg_cat9k.yaml /etc/trex_cfg_cat9k.yaml
-WORKDIR /v2.85
+WORKDIR /trex-latest
 CMD ["/bin/bash"]
 #CMD ["./t-rex-64", "-i"]
 #CMD ["./t-rex-64", "-i", "--cfg", "/etc/trex_cfg_cat9k.yaml"]
