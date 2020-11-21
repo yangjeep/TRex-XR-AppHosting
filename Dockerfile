@@ -12,6 +12,7 @@ RUN apt-get -y install python \
              vim
 RUN wget http://trex-tgn.cisco.com/trex/release/latest && \
     mv latest latest.tar.gz && \
+    mkdir trex-latest && \
     tar -zxvf latest.tar.gz -C trex-latest --strip-components 1 && \
     chown root:root /trex-latest  && \
     rm latest.tar.gz
