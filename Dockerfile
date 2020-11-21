@@ -18,6 +18,6 @@ RUN wget http://trex-tgn.cisco.com/trex/release/latest && \
     rm latest.tar.gz
 #COPY trex_cfg_cat9k.yaml /etc/trex_cfg_cat9k.yaml
 WORKDIR /trex-latest
-CMD ["/bin/bash"]
+CMD tail -f /dev/null
 #CMD ["./t-rex-64", "-i"]
 #CMD ["./t-rex-64", "-i", "--cfg", "/etc/trex_cfg_cat9k.yaml"]
