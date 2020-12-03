@@ -11,7 +11,7 @@ RUN apt-get -y install python \
              pciutils \
              vim
 RUN mkdir /trex && \
-    cd /trex &&
+    cd /trex && \
     wget http://trex-tgn.cisco.com/trex/release/latest && \
     mv latest latest.tar.gz && \
     mkdir trex-tgn && \
