@@ -1,3 +1,4 @@
+# Get base ready
 FROM ubuntu:20.04
 RUN apt-get update
 RUN apt-get -y install python \
@@ -10,19 +11,23 @@ RUN apt-get -y install python \
              iputils-ping \
              pciutils \
              vim
-RUN mkdir /trex && \
-    cd /trex && \
+RUN apt-get -y install kmod
+
+# Get IOL version ready
+RUN mkdir /trex
+RUN cd /trex && \
     wget http://trex-tgn.cisco.com/trex/release/latest && \
     mv latest latest.tar.gz && \
     mkdir trex-tgn && \
     tar -zxvf latest.tar.gz -C trex-tgn --strip-components 1 && \
-    chown root:root /trex-tgn  && \
-    rm latest.tar.gz && \
-    cd /trex && \
+    chown root:root /trex/trex-tgn  && \
+    rm latest.tar.gz
+
+RUN cd /trex && \
     wget https://aastha.cisco.com:9005/routem/releases/package/latest.tar.gz && \
     mkdir trex-iol && \
     tar -zxvf latest.tar.gz -C trex-iol --strip-components 1 && \
-    chown root:root /trex-tgn  && \
+    chown root:root /trex/trex-iol  && \
     rm latest.tar.gz
 
 #COPY trex_cfg_cat9k.yaml /etc/trex_cfg_cat9k.yaml
