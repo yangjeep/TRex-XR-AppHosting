@@ -10,8 +10,8 @@ RUN apt-get -y install python \
              iproute2 \
              iputils-ping \
              pciutils \
-             kmod \
              vim
+RUN apt-get -y install kmod
 
 # Get IOL version ready
 RUN mkdir /trex
