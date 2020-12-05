@@ -21,15 +21,15 @@ RUN cd /trex && \
     mv latest latest-trex-tgn.tar.gz && \
     mkdir trex-tgn && \
     tar -zxvf latest-trex-tgn.tar.gz -C trex-tgn --strip-components 1 && \
-    chown root:root /trex/trex-tgn  && \
-    rm latest.tar.gz
+    chown root:root /trex/trex-tgn
+RUN rm /trex/latest-trex-tgn.tar.gz
 
 RUN cd /trex && \
     wget https://aastha.cisco.com:9005/routem/releases/package/latest.tar.gz && \
     mkdir trex-iol && \
     tar -zxvf latest.tar.gz -C trex-iol --strip-components 1 && \
-    chown root:root /trex/trex-iol  && \
-    rm latest.tar.gz
+    chown root:root /trex/trex-iol
+RUN rm /trex/latest.tar.gz
 
 #COPY trex_cfg_cat9k.yaml /etc/trex_cfg_cat9k.yaml
 COPY test.yaml /trex/trex-iol/test.yaml
