@@ -12,25 +12,28 @@ RUN apt-get -y install python \
              pciutils \
              vim
 RUN apt-get -y install kmod
+RUN apt-get -y install python3
 
 # Get IOL version ready
 RUN mkdir /trex
 RUN cd /trex && \
     wget http://trex-tgn.cisco.com/trex/release/latest && \
-    mv latest latest.tar.gz && \
+    mv latest latest-trex-tgn.tar.gz && \
     mkdir trex-tgn && \
-    tar -zxvf latest.tar.gz -C trex-tgn --strip-components 1 && \
-    chown root:root /trex/trex-tgn  && \
-    rm latest.tar.gz
+    tar -zxvf latest-trex-tgn.tar.gz -C trex-tgn --strip-components 1 && \
+    chown root:root /trex/trex-tgn
+RUN rm /trex/latest-trex-tgn.tar.gz
 
 RUN cd /trex && \
     wget https://aastha.cisco.com:9005/routem/releases/package/latest.tar.gz && \
     mkdir trex-iol && \
     tar -zxvf latest.tar.gz -C trex-iol --strip-components 1 && \
-    chown root:root /trex/trex-iol  && \
-    rm latest.tar.gz
+    chown root:root /trex/trex-iol
+RUN rm /trex/latest.tar.gz
 
 #COPY trex_cfg_cat9k.yaml /etc/trex_cfg_cat9k.yaml
+COPY test.yaml /trex/trex-iol/test.yaml
+COPY test.yaml /trex/trex-tgn/test.yaml
 WORKDIR /trex
 
 CMD tail -f /dev/null
